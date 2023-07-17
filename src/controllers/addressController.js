@@ -20,11 +20,12 @@ module.exports = {
       return res.json("Usuario inexistente");
     }
 
-    const address = await Address.create({
+    const address = await Address.findOrCreate({where:{
       zipcode,
       street,
       number,
-      user_id,
+      user_id,}
+      
     });
     return res.json(
       await User.findAll({
