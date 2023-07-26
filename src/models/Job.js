@@ -15,6 +15,9 @@ class Job extends Model {
       through: "user_jobs",
       as: "users",
     });
+
+    
+
   }
 }
 

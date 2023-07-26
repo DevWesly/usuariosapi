@@ -20,8 +20,11 @@ routes.post('/user/:user_id/address', AddressController.storeAddress);
 
 //Rotas de Trabalho
 
-routes.get('/users/jobs', JobController.index);
-routes.post('/user/:user_id/jobs', JobController.create);
+routes.get('/jobs', JobController.index);
+routes.post('/user/:user_id/jobs', JobController.store);
+routes.delete('/user/:user_id/jobs', JobController.del);
+routes.delete('/jobs/destroy', JobController.destroy);
+routes.get('/job/:id/users',JobController.jobUsers)
 
 
 
