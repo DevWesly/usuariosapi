@@ -48,13 +48,17 @@ module.exports = {
     );
   },
   async destroy(req, res) {
-    let { name } = req.body;
-    let job = await Job.findAll({ where: { name } });
-    if (job == "") {
-      res.json("Esse usúario não consta no nosso banco de dados");
-    }
-    await job.destroy();
 
+
+
+    const { name } = req.body;
+    const job = await Job.findOne({ where: { name } });
+
+    if (!job) {
+      return res.json("Esse trabalho não consta no nosso banco de dados");
+    }
+    await job.destroy(); 
+    
     let jobs = await Job.findAll();
     return res.json(jobs);
   },
